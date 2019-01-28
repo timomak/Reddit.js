@@ -1,0 +1,23 @@
+{
+  "name": "reddit",
+  "version": "1.0.0",
+  "description": "The latest version of the Reddit Clone",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/timomak/Reddit.js.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/timomak/Reddit.js/issues"
+  },
+  "homepage": "https://github.com/timomak/Reddit.js#readme",
+  "dependencies": {
+    "express": "^4.16.4",
+    "express-handlebars": "^3.0.0"
+  }
+}
