@@ -1,15 +1,37 @@
 const express = require('express')
 const app = express()
-var exphbs = require('express-handlebars');
+const bodyParser = require('body-parser');
+const expressValidator = require('express-validator');
+const exphbs = require('express-handlebars');
 
+// Use Handlebars
 app.engine('handlebars', exphbs({ defaultLayout: 'main' }));
 app.set('view engine', 'handlebars');
 
+// Use Body Parser
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
 
+// Add after body parser initialization!
+app.use(expressValidator());
+
+// Adding controllers
+require("./controllers/posts.js")(app);
+
+// Set db
+require("./data/reddit-db");
+
+// Home
 app.get('/', (req, res) => {
-  res.render('home', { msg: 'Handlebars are Cool!' });
+  res.render('home', { msg: 'This is homeview' });
 })
 
+// New posts
+app.get('/posts/new', (req, res) => {
+  res.render('posts-new', {});
+})
+
+// Listen
 app.listen(3000, () => {
   console.log('App listening on port 3000!')
 })
