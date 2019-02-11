@@ -17,7 +17,6 @@ PostSchema.pre("save", function(next) {
   if (!this.createdAt) {
     this.createdAt = now;
   }
-
   next();
 });
 

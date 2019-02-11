@@ -13,4 +13,13 @@ module.exports = (app) => {
       return res.redirect(`/`);
     })
   });
+
+  app.get('/', (req, res) => {
+    Post.find({}).then(posts => {
+      res.render("post-index", { posts:posts });
+    })
+    .catch(err => {
+      console.log(err.message);
+    });
+  })
 }
