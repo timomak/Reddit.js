@@ -4,7 +4,7 @@
   "description": "The latest version of the Reddit Clone",
   "main": "index.js",
   "scripts": {
-  "test": "mocha"
+    "test": "mocha"
   },
   "repository": {
     "type": "git",
@@ -21,7 +21,8 @@
     "express": "^4.16.4",
     "express-handlebars": "^3.0.0",
     "express-validator": "^5.3.1",
-    "mongoose": "^5.4.8"
+    "mongoose": "^5.4.8",
+    "nodemon": "^1.18.10"
   },
   "devDependencies": {
     "chai": "^4.2.0",
