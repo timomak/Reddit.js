@@ -21,14 +21,18 @@ require("./controllers/posts.js")(app);
 // Set db
 require("./data/reddit-db");
 
-// // Home
+// // // Home
 // app.get('/', (req, res) => {
-//   // res.render('post-index', { msg: 'This is homeview' });
-//   res.redirect('/posts-index')
+//   Post.find({}).then(posts => {
+//     res.render("post-index", { posts:posts });
+//   })
+//   .catch(err => {
+//     console.log(err.message);
+//   });
 // })
 
 // New posts
-app.get('/posts/new', (req, res) => {
+app.get('/post/new', (req, res) => {
   res.render('posts-new', {});
 })
 

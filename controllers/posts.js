@@ -16,7 +16,7 @@ module.exports = (app) => {
 
   app.get('/', (req, res) => {
     Post.find({}).then(posts => {
-      res.render("post-index", { posts:posts });
+      res.render("posts-index", { posts:posts });
     })
     .catch(err => {
       console.log(err.message);
@@ -32,5 +32,16 @@ module.exports = (app) => {
     .catch(err => {
       console.log(err.message);
     });
+});
+
+// SUBREDDIT
+app.get("/n/:subreddit", function(req, res) {
+Post.find({ subreddit: req.params.subreddit })
+  .then(posts => {
+    res.render("posts-index", { posts });
+  })
+  .catch(err => {
+    console.log(err);
+  });
 });
 }
