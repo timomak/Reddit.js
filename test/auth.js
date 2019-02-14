@@ -33,6 +33,15 @@ describe("User", function() {
   });
 
   after(function () {
+    User.findOneAndDelete({
+        username: "testone"
+    })
+      .then(function (res) {
+          done()
+      })
+    .catch(function (err) {
+        done(err);
+    });
     agent.close()
   });
 });
