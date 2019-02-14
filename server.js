@@ -1,5 +1,10 @@
+// These must go here before app = express()
+require('dotenv').config();
 const express = require('express')
+var cookieParser = require('cookie-parser');
+const jwt = require('jsonwebtoken');
 const app = express()
+app.use(cookieParser()); // after app = express()
 const bodyParser = require('body-parser');
 const expressValidator = require('express-validator');
 const exphbs = require('express-handlebars');
@@ -19,6 +24,8 @@ app.use(expressValidator());
 require("./controllers/posts.js")(app);
 // Comment controllers
 require('./controllers/comments.js')(app);
+// Authorization
+require('./controllers/auth.js')(app);
 
 // Set db
 require("./data/reddit-db");

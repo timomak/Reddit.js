@@ -12,7 +12,17 @@
     <!-- As a link -->
     <nav class="navbar navbar-light bg-light">
       <a class="navbar-brand" href="/">Reddit.js</a>
-      <a href="/post/new" class="btn btn-primary navbar-btn">New Post</a>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">User</a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="/logout">Logout</a>
+            <a class="dropdown-item" href="/login">Login</a>
+            <a class="dropdown-item" href="/sign-up">Sign Up</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="#">Something else here</a>
+          </div>
+      </li>
+      <a href="/post/new" class="btn btn-primary navbar-btn my-2 my-sm-0">New Post</a>
     </nav>
 
     <div class="container">
