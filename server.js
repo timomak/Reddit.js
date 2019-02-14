@@ -20,6 +20,24 @@ app.use(bodyParser.urlencoded({ extended: false }));
 // Add after body parser initialization!
 app.use(expressValidator());
 
+// Check if user is loggen in. Must go before adding routes.
+// This doesn't work properly on safari.
+var checkAuth = (req, res, next) => {
+  console.log("Checking authentication");
+  if (typeof req.cookies.nToken === "undefined" || req.cookies.nToken === null) {
+    req.user = null;
+    console.log("Logged in");
+  } else {
+    console.log("Not Logged in");
+    var token = req.cookies.nToken;
+    var decodedToken = jwt.decode(token, { complete: true }) || {};
+    req.user = decodedToken.payload;
+  }
+
+  next();
+};
+app.use(checkAuth);
+
 // Adding controllers
 require("./controllers/posts.js")(app);
 // Comment controllers
@@ -30,20 +48,10 @@ require('./controllers/auth.js')(app);
 // Set db
 require("./data/reddit-db");
 
-
-// // // Home
-// app.get('/', (req, res) => {
-//   Post.find({}).then(posts => {
-//     res.render("post-index", { posts:posts });
-//   })
-//   .catch(err => {
-//     console.log(err.message);
-//   });
-// })
-
 // New posts
 app.get('/post/new', (req, res) => {
-  res.render('posts-new', {});
+  var currentUser = req.user;
+  res.render('posts-new', { currentUser });
 })
 
 // Listen
