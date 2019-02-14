@@ -18,4 +18,11 @@ module.exports = app => {
       res.redirect('/');
     });
   });
+
+  // LOGOUT
+  app.get('/logout', (req, res) => {
+    res.clearCookie('nToken');
+    res.redirect('/');
+  });
+
 };
