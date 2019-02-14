@@ -17,9 +17,12 @@ app.use(expressValidator());
 
 // Adding controllers
 require("./controllers/posts.js")(app);
+// Comment controllers
+require('./controllers/comments.js')(app);
 
 // Set db
 require("./data/reddit-db");
+
 
 // // // Home
 // app.get('/', (req, res) => {
